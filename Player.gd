@@ -83,14 +83,22 @@ func move_state(input):
 		coyoteJumpTimer.start()
 
 func player_die():
+	SoundPlayer.play_sound(SoundPlayer.HURT)
 	get_tree().reload_current_scene()
-
+	
+func input_jump():
+	if Input.is_action_just_pressed("ui_jump") or buffered_jump:
+		SoundPlayer.play_sound(SoundPlayer.JUMP)
+		velocity.y = moveData.JUMP_FORCE
+		buffered_jump = false
+		
 func input_jump_release():
 	if Input.is_action_just_released("ui_jump") and velocity.y < moveData.JUMP_RELEASE_FORCE:
 		velocity.y = moveData.JUMP_RELEASE_FORCE
 
 func input_double_jump():
 	if Input.is_action_just_pressed("ui_jump") and double_jump > 0:
+		SoundPlayer.play_sound(SoundPlayer.JUMP)
 		velocity.y = moveData.JUMP_FORCE
 		double_jump -= 1
 
@@ -131,10 +139,7 @@ func is_on_ladder() -> bool:
 	if not collider is Ladder: return false
 	return true
 	
-func input_jump():
-	if Input.is_action_just_pressed("ui_jump") or buffered_jump:
-		velocity.y = moveData.JUMP_FORCE
-		buffered_jump = false
+
 		
 func apply_gravity():
 	velocity.y += moveData.GRAVITY	
