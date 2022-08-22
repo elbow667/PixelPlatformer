@@ -18,6 +18,7 @@ onready var animatedSprite: = $AnimatedSprite
 onready var ladderCheck: = $LadderCheck
 onready var jumpBufferTimer: = $JumpBufferTimer
 onready var coyoteJumpTimer: = $CoyoteJumpTimer
+onready var remoteTransform2D: = $RemoteTransform2D
 
 	# load the default sprite frames
 	#animatedSprite.frames = load("res://PlayerGreenSkin.tres")
@@ -37,7 +38,10 @@ func _physics_process(_delta):
 	hot_key_pressed()
 
 
-	
+func connect_camera(camera):
+	var camera_path = camera.get_path()
+	remoteTransform2D.remote_path = camera_path
+
 
 func move_state(input):
 	
@@ -84,7 +88,8 @@ func move_state(input):
 
 func player_die():
 	SoundPlayer.play_sound(SoundPlayer.HURT)
-	get_tree().reload_current_scene()
+	queue_free()
+	Events.emit_signal("player_died")
 	
 func input_jump():
 	if Input.is_action_just_pressed("ui_jump") or buffered_jump:

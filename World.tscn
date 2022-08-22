@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://WalkingEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Ladder.tscn" type="PackedScene" id=6]
 [ext_resource path="res://MovingSpikeEnemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://CheckPoint.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -67,3 +68,15 @@ curve = SubResource( 1 )
 position = Vector2( 342, 52 )
 curve = SubResource( 2 )
 animation_type = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CheckPoint" parent="." instance=ExtResource( 8 )]
+position = Vector2( 607, 58 )
+
+[node name="CheckPoint2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 204, 40 )

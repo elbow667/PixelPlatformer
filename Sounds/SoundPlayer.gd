@@ -1,5 +1,7 @@
 extends Node
 
+# Everything in here is global
+
 const HURT = preload("res://Sounds/hurt.wav")
 const JUMP = preload("res://Sounds/jump.wav")
 
