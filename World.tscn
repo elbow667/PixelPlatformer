@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -8,10 +8,11 @@
 [ext_resource path="res://Ladder.tscn" type="PackedScene" id=6]
 [ext_resource path="res://MovingSpikeEnemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://CheckPoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://StompEnemy.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -4, -27, 0, 0, 0, 0, -80, -31, 0, 0, 0, 0, -79.097, -4.88088, 0, 0, 0, 0, -84, 40, 0, 0, 0, 0, -5, 37, 0, 0, 0, 0, 78, 38, 0, 0, 0, 0, 77, -31, 0, 0, 0, 0, -4, -27 )
+"points": PoolVector2Array( 0, 0, 0, 0, -4, -27, 0, 0, 0, 0, -80, -31, 0, 0, 0, 0, -79.097, -4.88088, 0, 0, 0, 0, -84, 40, 0, 0, 0, 0, -5, 37, 0, 0, 0, 0, 5, 21, 0, 0, 0, 0, 28, -25, 0, 0, 0, 0, -4, -27 )
 }
 
 [sub_resource type="Curve2D" id=2]
@@ -80,3 +81,6 @@ position = Vector2( 607, 58 )
 
 [node name="CheckPoint2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 204, 40 )
+
+[node name="StompEnemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 140, 5 )
